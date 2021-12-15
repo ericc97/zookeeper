@@ -117,6 +117,16 @@
         "tall"
       ],
       "id": "11"
+    },
+    {
+      "name": "Perry",
+      "species": "Platypus",
+      "diet": "omnivore",
+      "personalityTraits": [
+        "anxious",
+        "goofy"
+      ],
+      "id": "12"
     }
   ]
 }

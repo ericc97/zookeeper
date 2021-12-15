@@ -2,6 +2,8 @@ const express = require('express');
 const {animals} = require('./data/animals.json');
 const fs = require('fs');
 const path = require('path');
+const res = require('express/lib/response');
+const req = require('express/lib/request');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -12,6 +14,8 @@ const app = express();
 app.use(express.urlencoded({ extended: true}));
 // parse incoming JSON data
 app.use(express.json());
+// utilize public js,css and html files
+app.use(express.static('public'));
 
 
 
@@ -122,6 +126,23 @@ app.post('/api/animals', (req, res) => {
         res.json(animal);
     }
 
+});
+
+app.get('/', (req,res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+app.get('/animals', (req,res) => {
+    res.sendFile(path.join(__dirname, './public/animals.html'));
+});
+
+app.get('/zookeepers', (req,res) => {
+    res.sendFile(path.join(__dirname, './public/zookeepers.html'))
+});
+
+// wild card route 
+app.get('*', (req,res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 
