@@ -23,13 +23,13 @@ test("Should filter a zookeeper/'s by a query", () => {
         {
             id: "3",
             name: "Pauly D",
-            age: "24",
+            age: 24,
             favoriteAnimal: "koala",
         },
         {
             id: "4",
             name: "Vinny",
-            age: "27",
+            age: 27,
             favoriteAnimal: "pig",
         }
     ];

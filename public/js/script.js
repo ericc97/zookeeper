@@ -27,7 +27,7 @@ const handleAnimalFormSubmit = event => {
   }
   const animalObject = { name, species, diet, personalityTraits };
 
-  fetch('/api/animals', {
+  fetch('api/animals', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -38,48 +38,44 @@ const handleAnimalFormSubmit = event => {
     .then(response => {
       if (response.ok) {
         return response.json();
-      }else {
-        alert('Error : ' + response.statusText);
       }
+      alert('Error: ' + response.statusText);
     })
     .then(postResponse => {
       console.log(postResponse);
-      alert('Thank you for adding an animal!')
+      alert('Thank you for adding an animal!');
     });
-
 };
 
 const handleZookeeperFormSubmit = event => {
   event.preventDefault();
 
-  // get zookeepers data and organize it
-  const name = $zookeeperForm.querySelector('[name="zookeeper-name').value;
+  // get zookeeper data and organize it
+  const name = $zookeeperForm.querySelector('[name="zookeeper-name"]').value;
   const age = parseInt($zookeeperForm.querySelector('[name="age"]').value);
   const favoriteAnimal = $zookeeperForm.querySelector('[name="favorite-animal"]').value;
 
   const zookeeperObj = { name, age, favoriteAnimal };
   console.log(zookeeperObj);
   fetch('api/zookeepers', {
-    method: "POST",
+    method: 'POST',
     headers: {
       Accept: 'application/json',
-      'Content-type': 'application/json'
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify(zookeeperObj)
   })
     .then(response => {
       if (response.ok) {
         return response.json();
-      }else {
-        alert('Error: ' + response.statusText);
       }
+      alert('Error: ' + response.statusText);
     })
-      .then(postResponse => {
-        console.log(postResponse);
-        alert('Thank you for adding a new zookeeper!')
-      });
-
-}
+    .then(postResponse => {
+      console.log(postResponse);
+      alert('Thank you for adding a zookeeper!');
+    });
+};
 
 $animalForm.addEventListener('submit', handleAnimalFormSubmit);
 $zookeeperForm.addEventListener('submit', handleZookeeperFormSubmit);
